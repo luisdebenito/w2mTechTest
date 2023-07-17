@@ -1,0 +1,76 @@
+<div class="card">
+  <h2>Superheroes</h2>
+  <div class="flex justify-content-center">
+    <input pInputText type="text" [(ngModel)]="searchStr" />
+    <button pButton icon="pi pi-search" (click)="search()"></button>
+  </div>
+  <p-table #tb [value]="superHeroes" [rows]="15" [paginator]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">
+          Name <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="id">Id <p-sortIcon field="id"></p-sortIcon></th>
+        <th>
+          <button
+            pButton
+            icon="pi pi-plus"
+            class="p-button-success mr-2 p-button-rounded"
+            tooltipPosition="top"
+            (click)="prepareCreate()"
+          ></button>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-sh>
+      <tr>
+        <td>{{ sh.name }}</td>
+        <td>{{ sh.id }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-warning mr-2"
+            (click)="prepareEdit(sh)"
+          ></button>
+
+          <button
+            pButton
+            icon="pi pi-trash"
+            class="p-button-danger mr-2 p-button-rounded"
+            tooltipPosition="top"
+            (click)="delete(sh.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog
+  [draggable]="false"
+  [resizable]="false"
+  [(visible)]="editDialog"
+  [style]="{ width: '50%' }"
+  header="SuperHero"
+  [modal]="true"
+>
+  <div class="form">
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="p-field">
+        <label>* Name</label>
+        <input pInputText type="text" formControlName="name" required appCapitalize />
+      </div>
+
+      <div class="flex align-items-center justify-content-center">
+        <p-button
+          label="Save"
+          type="submit"
+          class="btn-primary"
+          [disabled]="form.invalid"
+        ></p-button>
+      </div>
+    </form>
+  </div>
+</p-dialog>

@@ -1,0 +1,17 @@
+<!--TOAST ELEMENTS-->
+<app-toast-content></app-toast-content>
+
+<!-- Waiting service -->
+<app-waiting-spinner></app-waiting-spinner>
+
+<!-- CONFIRM DIALOG -->
+<p-confirmDialog #cd [style]="{width: '450px'}">
+  <ng-template pTemplate="footer">
+    <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+    <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+  </ng-template>
+</p-confirmDialog>
+
+
+<!-- I would insert here the router outlet but I dont think it is neccessary -->
+<app-superhero></app-superhero>

@@ -1,0 +1,16 @@
+div.background {
+  background-color: rgba(79, 82, 93, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 12345678987654321;
+  display: flex;
+
+  i {
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }
+}
