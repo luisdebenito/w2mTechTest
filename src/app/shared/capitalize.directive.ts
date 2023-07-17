@@ -8,6 +8,6 @@ export class CapitalizeDirective {
 
   @HostListener('input', ['$event.target.value'])
   onInput(value: string) {
-    this.el.nativeElement.value = value.toUpperCase();;
+    this.el.nativeElement.value = value.toUpperCase();
   }
 }
